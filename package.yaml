@@ -1,0 +1,100 @@
+# This YAML file describes your package. Stack will automatically generate a
+# Cabal file when you run `stack build`. See the hpack website for help with
+# this file: <https://github.com/sol/hpack>.
+benchmarks:
+  sticky-server-client-benchmarks:
+    dependencies:
+    - base
+    - sticky-server-client
+    - criterion
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    main: Main.hs
+    source-dirs: benchmark
+category: Other
+description: sticky-server-client is a new Haskeleton package.
+executables:
+  sticky-server-demo:
+    dependencies:
+    - base
+    - cereal
+    - bytestring
+    - sticky-server-client
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    main: MainServer.hs
+    source-dirs: executable
+  sticky-client-demo:
+    dependencies:
+    - base
+    - cereal
+    - random
+    - bytestring
+    - sticky-server-client
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    main: MainClient.hs
+    source-dirs: executable
+  sticky-server-client:
+    dependencies:
+    - base
+    - cereal
+    - sticky-server-client
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    main: Main.hs
+    source-dirs: executable
+extra-source-files:
+- CHANGELOG.md
+- LICENSE.md
+- package.yaml
+- README.md
+- stack.yaml
+ghc-options: -Wall
+github: smunix/sticky-server-client
+library:
+  exposed-modules:
+  - Example
+  - Messages.Messages
+  - Network.Network
+  - Library
+  extensions:
+  - DeriveGeneric
+  - DeriveAnyClass
+  - OverloadedStrings
+  dependencies:
+  - base
+  - cereal
+  - bytestring
+  - chalk
+  - uuid
+  - network
+  - derive-storable
+  - derive-storable-plugin
+  source-dirs: library
+license: MIT
+maintainer: Providence Salumu
+name: sticky-server-client
+synopsis: A new Haskeleton package.
+tests:
+  sticky-server-client-test-suite:
+    dependencies:
+    - base
+    - sticky-server-client
+    - tasty
+    - tasty-hspec
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    main: Main.hs
+    source-dirs: test-suite
+version: '0.0.1'
